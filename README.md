@@ -27,6 +27,7 @@ instalado é pulado.
 | `scripts/06-sdkman.sh` | Instala o SDKMAN!, carrega no `.zshrc`/`.bashrc` e instala o Java LTS mais recente (Temurin) como padrão |
 | `scripts/07-vscode.sh` | Baixa o `.deb` mais recente do VS Code direto do site e instala, adicionando o repositório da Microsoft para atualizar via `apt` |
 | `scripts/08-docker.sh` | Instala o Docker Engine (repositório oficial), o Docker Desktop e adiciona o usuário aos grupos `docker`/`kvm` para usar sem `sudo` |
+| `scripts/09-chrome.sh` | Baixa e instala o Google Chrome, garante o repositório apt para atualizações e o define como navegador padrão |
 
 Para adicionar um novo passo, crie `scripts/NN-nome.sh` (o número define a ordem).
 
