@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# Instala zsh, Oh My Zsh, zinit e os plugins, e define o zsh como shell padrão.
+# Instala zsh, Oh My Zsh, zinit e os plugins (lista em config/zsh-plugins.txt),
+# e define o zsh como shell padrão.
 #
 # @title Zsh + Oh My Zsh + zinit e plugins
 # @check [[ -d $HOME/.oh-my-zsh && -d $HOME/.local/share/zinit/zinit.git ]] && getent passwd "$USER" | grep -q "/zsh$"
@@ -8,6 +9,7 @@ source "$(dirname "$0")/lib.sh"
 
 ZSHRC="$HOME/.zshrc"
 ZINIT_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/zinit/zinit.git"
+PLUGINS_FILE="$(dirname "$0")/../config/zsh-plugins.txt"
 
 # --- zsh ---------------------------------------------------------------------
 apt_install zsh curl git
@@ -42,11 +44,12 @@ else
   git clone --quiet https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 fi
 
-write_block "$ZSHRC" zinit <<EOF
-source "$ZINIT_HOME/zinit.zsh"
+# Plugins vêm de config/zsh-plugins.txt (ignorando comentários e linhas vazias).
+mapfile -t plugins < <(sed -e 's/#.*//' -e 's/[[:space:]]//g' -e '/^$/d' "$PLUGINS_FILE")
 
-zinit light zdharma-continuum/fast-syntax-highlighting
-zinit light zsh-users/zsh-autosuggestions
-zinit light zsh-users/zsh-completions
-EOF
-success "Plugins do zinit configurados em $ZSHRC"
+{
+  echo "source \"$ZINIT_HOME/zinit.zsh\""
+  echo
+  if ((${#plugins[@]})); then printf 'zinit light %s\n' "${plugins[@]}"; fi
+} | write_block "$ZSHRC" zinit
+success "${#plugins[@]} plugins do zinit configurados em $ZSHRC: ${plugins[*]}"

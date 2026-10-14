@@ -1,0 +1,12 @@
+# Plugins do zsh carregados pelo zinit (um por linha, no formato usuario/repo do GitHub).
+# Adicione ou remova à vontade e rode: ./install.sh zsh
+# Linhas vazias e começando com # são ignoradas.
+
+# Destaca os comandos enquanto digita (verde = válido, vermelho = inválido)
+zdharma-continuum/fast-syntax-highlighting
+
+# Sugere comandos com base no histórico
+zsh-users/zsh-autosuggestions
+
+# Completa comandos e mostra informações sobre eles
+zsh-users/zsh-completions

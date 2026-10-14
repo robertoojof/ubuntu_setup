@@ -28,7 +28,7 @@ instalado é pulado.
 | Script | O que faz |
 | --- | --- |
 | `scripts/00-update.sh` | `apt update` + `apt upgrade` |
-| `scripts/01-zsh.sh` | Instala zsh, define como shell padrão, Oh My Zsh, zinit e os plugins (fast-syntax-highlighting, zsh-autosuggestions, zsh-completions) |
+| `scripts/01-zsh.sh` | Instala zsh, define como shell padrão, Oh My Zsh, zinit e os plugins listados em [`config/zsh-plugins.txt`](config/zsh-plugins.txt) |
 | `scripts/02-theme.sh` | Instala o tema [Aphrodite](https://github.com/win0err/aphrodite-terminal-theme) no Oh My Zsh e o define como `ZSH_THEME` |
 | `scripts/03-fonts.sh` | Instala Fira Code (apt) e a Nerd Font BitstreamVeraSansMono em `~/.local/share/fonts` |
 | `scripts/04-nvm.sh` | Instala o nvm, carrega no `.zshrc`/`.bashrc` e instala o Node LTS como versão padrão |
@@ -40,6 +40,15 @@ instalado é pulado.
 | `scripts/10-ssh-github.sh` | Gera a chave SSH (`ed25519`) com o email do `.env`, configura `~/.ssh/config`/`known_hosts`, abre a página do GitHub para cadastrar a chave e testa a conexão |
 | `scripts/11-git.sh` | Configura `user.name` e `user.email` globais do git com `GIT_NAME`/`GIT_EMAIL` do `.env` |
 | `scripts/12-pgadmin.sh` | Instala o pgAdmin 4 Desktop (sem o modo web) seguindo as [instruções do site](https://www.pgadmin.org/download/pgadmin-4-apt/), com o repositório apt para atualizações |
+
+### Plugins do zsh
+
+Os plugins ficam em [`config/zsh-plugins.txt`](config/zsh-plugins.txt), um
+por linha no formato `usuario/repo` do GitHub. Edite a lista e rode
+`./install.sh zsh` para atualizar o `.zshrc` (no menu, esse passo aparece como
+instalado; marque-o mesmo assim).
+
+## Novos passos
 
 Para adicionar um novo passo, crie `scripts/NN-nome.sh` (o número define a
 ordem) com o cabeçalho que o menu usa:
