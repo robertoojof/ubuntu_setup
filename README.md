@@ -40,6 +40,7 @@ instalado é pulado.
 | `scripts/10-ssh-github.sh` | Gera a chave SSH (`ed25519`) com o email do `.env`, configura `~/.ssh/config`/`known_hosts`, abre a página do GitHub para cadastrar a chave e testa a conexão |
 | `scripts/11-git.sh` | Configura `user.name` e `user.email` globais do git com `GIT_NAME`/`GIT_EMAIL` do `.env` |
 | `scripts/12-pgadmin.sh` | Instala o pgAdmin 4 Desktop (sem o modo web) seguindo as [instruções do site](https://www.pgadmin.org/download/pgadmin-4-apt/), com o repositório apt para atualizações |
+| `scripts/13-wallpaper.sh` | Aplica a imagem de [`config/wallpaper/`](config/wallpaper/) como wallpaper nos modos claro e escuro e na tela de bloqueio |
 
 ### Plugins do zsh
 
