@@ -25,6 +25,7 @@ instalado é pulado.
 | `scripts/04-nvm.sh` | Instala o nvm, carrega no `.zshrc`/`.bashrc` e instala o Node LTS como versão padrão |
 | `scripts/05-pyenv.sh` | Instala o pyenv, o último Python 3 estável como global, o alias `py` e atualiza o pip se necessário (outra versão: `PYTHON_VERSION=3.12 ./install.sh pyenv`) |
 | `scripts/06-sdkman.sh` | Instala o SDKMAN!, carrega no `.zshrc`/`.bashrc` e instala o Java LTS mais recente (Temurin) como padrão |
+| `scripts/07-vscode.sh` | Baixa o `.deb` mais recente do VS Code direto do site e instala, adicionando o repositório da Microsoft para atualizar via `apt` |
 
 Para adicionar um novo passo, crie `scripts/NN-nome.sh` (o número define a ordem).
 
