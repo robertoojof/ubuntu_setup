@@ -5,8 +5,6 @@ source "$(dirname "$0")/lib.sh"
 
 ZSHRC="$HOME/.zshrc"
 ZINIT_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/zinit/zinit.git"
-BLOCK_START="# >>> ubuntu_setup: zinit >>>"
-BLOCK_END="# <<< ubuntu_setup: zinit <<<"
 
 # --- zsh ---------------------------------------------------------------------
 apt_install zsh curl git
@@ -41,16 +39,11 @@ else
   git clone --quiet https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 fi
 
-# Reescreve o bloco gerenciado no final do .zshrc (idempotente).
-touch "$ZSHRC"
-sed -i "/^$BLOCK_START\$/,/^$BLOCK_END\$/d" "$ZSHRC"
-cat >>"$ZSHRC" <<EOF
-$BLOCK_START
+write_block "$ZSHRC" zinit <<EOF
 source "$ZINIT_HOME/zinit.zsh"
 
 zinit light zdharma-continuum/fast-syntax-highlighting
 zinit light zsh-users/zsh-autosuggestions
 zinit light zsh-users/zsh-completions
-$BLOCK_END
 EOF
 success "Plugins do zinit configurados em $ZSHRC"

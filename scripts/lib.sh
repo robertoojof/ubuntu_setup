@@ -19,3 +19,13 @@ apt_install() {
     success "Já instalados: $*"
   fi
 }
+
+# Escreve (ou substitui) um bloco gerenciado no final de um arquivo.
+# Uso: write_block <arquivo> <nome> <<'EOF' ... EOF
+write_block() {
+  local file="$1" name="$2"
+  local start="# >>> ubuntu_setup: $name >>>" end="# <<< ubuntu_setup: $name <<<"
+  touch "$file"
+  sed -i "/^$start\$/,/^$end\$/d" "$file"
+  { echo "$start"; cat; echo "$end"; } >>"$file"
+}
