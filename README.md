@@ -26,12 +26,17 @@ instalado é pulado.
 | `scripts/05-pyenv.sh` | Instala o pyenv, o último Python 3 estável como global, o alias `py` e atualiza o pip se necessário (outra versão: `PYTHON_VERSION=3.12 ./install.sh pyenv`) |
 | `scripts/06-sdkman.sh` | Instala o SDKMAN!, carrega no `.zshrc`/`.bashrc` e instala o Java LTS mais recente (Temurin) como padrão |
 | `scripts/07-vscode.sh` | Baixa o `.deb` mais recente do VS Code direto do site e instala, adicionando o repositório da Microsoft para atualizar via `apt` |
+| `scripts/08-docker.sh` | Instala o Docker Engine (repositório oficial), o Docker Desktop e adiciona o usuário aos grupos `docker`/`kvm` para usar sem `sudo` |
 
 Para adicionar um novo passo, crie `scripts/NN-nome.sh` (o número define a ordem).
 
 ## Depois de rodar
 
-- Faça **logout/login** para o zsh virar o shell padrão.
+- Faça **logout/login** para o zsh virar o shell padrão e para usar o
+  `docker` sem `sudo`.
+- O `docker` tem dois contextos: `default` (Docker Engine) e `desktop-linux`
+  (Docker Desktop, ativo quando ele está aberto). Troque com
+  `docker context use <nome>`.
 - Nas preferências do terminal, ative **Fonte personalizada** e escolha
   `Fira Code Medium` (ou a Nerd Font). Feche e abra o terminal.
 
