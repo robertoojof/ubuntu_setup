@@ -7,6 +7,7 @@ Scripts para configurar o Ubuntu depois da formatação.
 ```bash
 git clone <url-deste-repo> ~/ubuntu_setup
 cd ~/ubuntu_setup
+cp .env.example .env      # preencha seus dados
 ./install.sh              # roda tudo, em ordem
 ./install.sh zsh fonts    # roda só os passos escolhidos
 ```
@@ -28,6 +29,7 @@ instalado é pulado.
 | `scripts/07-vscode.sh` | Baixa o `.deb` mais recente do VS Code direto do site e instala, adicionando o repositório da Microsoft para atualizar via `apt` |
 | `scripts/08-docker.sh` | Instala o Docker Engine (repositório oficial), o Docker Desktop e adiciona o usuário aos grupos `docker`/`kvm` para usar sem `sudo` |
 | `scripts/09-chrome.sh` | Baixa e instala o Google Chrome, garante o repositório apt para atualizações e o define como navegador padrão |
+| `scripts/10-ssh-github.sh` | Gera a chave SSH (`ed25519`) com o email do `.env`, configura `~/.ssh/config`/`known_hosts`, abre a página do GitHub para cadastrar a chave e testa a conexão |
 
 Para adicionar um novo passo, crie `scripts/NN-nome.sh` (o número define a ordem).
 
