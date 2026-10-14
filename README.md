@@ -40,5 +40,3 @@ Para adicionar um novo passo, crie `scripts/NN-nome.sh` (o número define a orde
   `docker context use <nome>`.
 - Nas preferências do terminal, ative **Fonte personalizada** e escolha
   `Fira Code Medium` (ou a Nerd Font). Feche e abra o terminal.
-
-O passo a passo manual original está em `Personalizado_o_terminal_do_linux.pdf`.
