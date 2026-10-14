@@ -20,9 +20,10 @@ instalado é pulado.
 | --- | --- |
 | `scripts/00-update.sh` | `apt update` + `apt upgrade` |
 | `scripts/01-zsh.sh` | Instala zsh, define como shell padrão, Oh My Zsh, zinit e os plugins (fast-syntax-highlighting, zsh-autosuggestions, zsh-completions) |
-| `scripts/02-fonts.sh` | Instala Fira Code (apt) e a Nerd Font BitstreamVeraSansMono em `~/.local/share/fonts` |
-| `scripts/03-nvm.sh` | Instala o nvm, carrega no `.zshrc`/`.bashrc` e instala o Node LTS como versão padrão |
-| `scripts/04-pyenv.sh` | Instala o pyenv, o último Python 3 estável como global, o alias `py` e atualiza o pip se necessário (outra versão: `PYTHON_VERSION=3.12 ./install.sh pyenv`) |
+| `scripts/02-theme.sh` | Instala o tema [Aphrodite](https://github.com/win0err/aphrodite-terminal-theme) no Oh My Zsh e o define como `ZSH_THEME` |
+| `scripts/03-fonts.sh` | Instala Fira Code (apt) e a Nerd Font BitstreamVeraSansMono em `~/.local/share/fonts` |
+| `scripts/04-nvm.sh` | Instala o nvm, carrega no `.zshrc`/`.bashrc` e instala o Node LTS como versão padrão |
+| `scripts/05-pyenv.sh` | Instala o pyenv, o último Python 3 estável como global, o alias `py` e atualiza o pip se necessário (outra versão: `PYTHON_VERSION=3.12 ./install.sh pyenv`) |
 
 Para adicionar um novo passo, crie `scripts/NN-nome.sh` (o número define a ordem).
 
