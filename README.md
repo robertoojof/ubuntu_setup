@@ -31,6 +31,7 @@ instalado é pulado.
 | `scripts/09-chrome.sh` | Baixa e instala o Google Chrome, garante o repositório apt para atualizações e o define como navegador padrão |
 | `scripts/10-ssh-github.sh` | Gera a chave SSH (`ed25519`) com o email do `.env`, configura `~/.ssh/config`/`known_hosts`, abre a página do GitHub para cadastrar a chave e testa a conexão |
 | `scripts/11-git.sh` | Configura `user.name` e `user.email` globais do git com `GIT_NAME`/`GIT_EMAIL` do `.env` |
+| `scripts/12-pgadmin.sh` | Instala o pgAdmin 4 Desktop (sem o modo web) seguindo as [instruções do site](https://www.pgadmin.org/download/pgadmin-4-apt/), com o repositório apt para atualizações |
 
 Para adicionar um novo passo, crie `scripts/NN-nome.sh` (o número define a ordem).
 
