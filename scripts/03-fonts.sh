@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 # Instala as fontes: Nerd Font (ícones) e Fira Code (ligatures).
+#
+# @title Fontes (Fira Code e Nerd Font)
+# @check dpkg -s fonts-firacode && compgen -G "$HOME/.local/share/fonts/BitstreamVeraSansMono/*.ttf"
 set -euo pipefail
 source "$(dirname "$0")/lib.sh"
 

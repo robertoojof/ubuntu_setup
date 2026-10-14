@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 # Baixa e instala a versão mais recente do VS Code direto do site, aceitando
 # adicionar o repositório da Microsoft para atualizar depois via apt.
+#
+# @title Visual Studio Code
+# @check command -v code
 set -euo pipefail
 source "$(dirname "$0")/lib.sh"
 
@@ -31,6 +34,6 @@ wget -q --show-progress -O "$tmp/code.deb" \
 echo "code code/add-microsoft-repo boolean true" | sudo debconf-set-selections
 
 info "Instalando VS Code"
-sudo apt-get install -y "$tmp/code.deb"
+sudo DEBIAN_FRONTEND=noninteractive apt-get install -y "$tmp/code.deb"
 
 success "VS Code $(code --version | head -n1) instalado; atualizações chegam via apt"

@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 # Configura nome e email globais do git a partir do .env.
+#
+# @title Nome e email do git
+# @check [[ -n "$(git config --global user.email)" ]]
+# @env GIT_NAME GIT_EMAIL
 set -euo pipefail
 source "$(dirname "$0")/lib.sh"
 

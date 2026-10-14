@@ -7,10 +7,18 @@ Scripts para configurar o Ubuntu depois da formatação.
 ```bash
 git clone <url-deste-repo> ~/ubuntu_setup
 cd ~/ubuntu_setup
-cp .env.example .env      # preencha seus dados
-./install.sh              # roda tudo, em ordem
-./install.sh zsh fonts    # roda só os passos escolhidos
+./install.sh              # abre o menu
+./install.sh --all        # roda tudo, sem menu
+./install.sh zsh fonts    # roda só os passos escolhidos, sem menu
 ```
+
+O menu (feito com `whiptail`) mostra todos os passos, já desmarcando o que
+estiver instalado. Ele pede o que faltar no `.env` (nome, email), pede a senha
+do `sudo` uma vez só, mostra uma barra de progresso e, no fim, um resumo com o
+que deu certo, o que falhou e os próximos passos. A saída completa fica em
+`logs/`.
+
+Sem o menu, preencha o `.env` antes: `cp .env.example .env`.
 
 Os scripts podem ser rodados mais de uma vez sem problema: o que já estiver
 instalado é pulado.
@@ -33,7 +41,18 @@ instalado é pulado.
 | `scripts/11-git.sh` | Configura `user.name` e `user.email` globais do git com `GIT_NAME`/`GIT_EMAIL` do `.env` |
 | `scripts/12-pgadmin.sh` | Instala o pgAdmin 4 Desktop (sem o modo web) seguindo as [instruções do site](https://www.pgadmin.org/download/pgadmin-4-apt/), com o repositório apt para atualizações |
 
-Para adicionar um novo passo, crie `scripts/NN-nome.sh` (o número define a ordem).
+Para adicionar um novo passo, crie `scripts/NN-nome.sh` (o número define a
+ordem) com o cabeçalho que o menu usa:
+
+```bash
+#!/usr/bin/env bash
+# O que o script faz.
+#
+# @title Nome que aparece no menu
+# @check comando que retorna 0 se o passo já está feito (opcional)
+# @env VARIAVEL_DO_ENV OUTRA (opcional)
+# @interactive    (opcional: o passo pede algo no terminal)
+```
 
 ## Depois de rodar
 

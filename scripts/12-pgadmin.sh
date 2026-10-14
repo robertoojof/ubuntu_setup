@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 # Instala o pgAdmin 4 Desktop (sem o modo web) seguindo as instruções do site:
 # https://www.pgadmin.org/download/pgadmin-4-apt/
+#
+# @title pgAdmin 4 Desktop
+# @check dpkg -s pgadmin4-desktop
 set -euo pipefail
 source "$(dirname "$0")/lib.sh"
 

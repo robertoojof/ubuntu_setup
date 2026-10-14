@@ -3,7 +3,11 @@
 
 info()    { printf '\033[1;34m==>\033[0m %s\n' "$*"; }
 success() { printf '\033[1;32m✔\033[0m %s\n' "$*"; }
-warn()    { printf '\033[1;33m!\033[0m %s\n' "$*"; }
+# Avisos também vão para $SETUP_NOTES (se definido), para o resumo do menu.
+warn() {
+  printf '\033[1;33m!\033[0m %s\n' "$*"
+  [[ -z "${SETUP_NOTES:-}" ]] || echo "$*" >>"$SETUP_NOTES"
+}
 error()   { printf '\033[1;31m✖\033[0m %s\n' "$*" >&2; }
 
 # Instala pacotes apt apenas se ainda não estiverem instalados.
@@ -14,7 +18,7 @@ apt_install() {
   done
   if ((${#missing[@]})); then
     info "Instalando: ${missing[*]}"
-    sudo apt-get install -y "${missing[@]}"
+    sudo DEBIAN_FRONTEND=noninteractive apt-get install -y "${missing[@]}"
   else
     success "Já instalados: $*"
   fi

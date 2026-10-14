@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 # Instala o tema Aphrodite no Oh My Zsh e o define como tema do zsh.
 # https://github.com/win0err/aphrodite-terminal-theme
+#
+# @title Tema Aphrodite no zsh
+# @check grep -q '^ZSH_THEME="aphrodite/aphrodite"' $HOME/.zshrc
 set -euo pipefail
 source "$(dirname "$0")/lib.sh"
 

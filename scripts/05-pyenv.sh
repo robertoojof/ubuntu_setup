@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 # Instala o pyenv, a última versão estável do Python 3 (global), o alias `py`
 # e atualiza o pip se houver versão nova.
+#
+# @title pyenv + Python 3 + alias py
+# @check [[ -d $HOME/.pyenv/versions ]] && grep -q 'ubuntu_setup: pyenv' $HOME/.zshrc && [[ -n "$(ls $HOME/.pyenv/versions)" ]]
 set -euo pipefail
 source "$(dirname "$0")/lib.sh"
 

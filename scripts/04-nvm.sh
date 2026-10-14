@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 # Instala o nvm e a versão LTS do Node (definida como padrão).
+#
+# @title nvm + Node LTS
+# @check [[ -s $HOME/.nvm/nvm.sh ]] && ls $HOME/.nvm/versions/node/* -d
 set -euo pipefail
 source "$(dirname "$0")/lib.sh"
 

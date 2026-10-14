@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 # Instala o Docker Engine (repositório oficial) e o Docker Desktop, e libera o
 # uso do docker no terminal sem sudo.
+#
+# @title Docker Engine + Docker Desktop (sem sudo)
+# @check dpkg -s docker-ce && id -nG "$USER" | grep -qw docker
 set -euo pipefail
 source "$(dirname "$0")/lib.sh"
 
@@ -59,7 +62,7 @@ else
     "https://desktop.docker.com/linux/main/amd64/docker-desktop-amd64.deb"
 
   info "Instalando Docker Desktop"
-  sudo apt-get install -y "$tmp/docker-desktop-amd64.deb"
+  sudo DEBIAN_FRONTEND=noninteractive apt-get install -y "$tmp/docker-desktop-amd64.deb"
 fi
 
 success "Docker $(docker --version | cut -d' ' -f3 | tr -d ,) instalado"

@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 # Gera uma chave SSH para o GitHub (email lido do .env), configura o
 # ~/.ssh/config e ajuda a cadastrar a chave na conta.
+#
+# @title Chave SSH do GitHub
+# @check [[ -f $HOME/.ssh/id_ed25519 ]] && grep -q 'ubuntu_setup: github' $HOME/.ssh/config
+# @env GITHUB_EMAIL
+# @interactive
 set -euo pipefail
 source "$(dirname "$0")/lib.sh"
 

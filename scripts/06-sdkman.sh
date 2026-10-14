@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 # Instala o SDKMAN! e o Java LTS mais recente (Temurin) como padrão.
+#
+# @title SDKMAN! + Java LTS
+# @check [[ -d $HOME/.sdkman/candidates/java/current ]]
 set -euo pipefail
 source "$(dirname "$0")/lib.sh"
 

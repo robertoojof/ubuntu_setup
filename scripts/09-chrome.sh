@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 # Baixa e instala o Google Chrome, garante o repositório apt para atualizações
 # e o define como navegador padrão.
+#
+# @title Google Chrome (navegador padrão)
+# @check dpkg -s google-chrome-stable
 set -euo pipefail
 source "$(dirname "$0")/lib.sh"
 
@@ -28,7 +31,7 @@ else
     "https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb"
 
   info "Instalando Google Chrome"
-  sudo apt-get install -y "$tmp/google-chrome.deb"
+  sudo DEBIAN_FRONTEND=noninteractive apt-get install -y "$tmp/google-chrome.deb"
 fi
 
 # --- Repositório apt ---------------------------------------------------------

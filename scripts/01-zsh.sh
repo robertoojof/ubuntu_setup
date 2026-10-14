@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 # Instala zsh, Oh My Zsh, zinit e os plugins, e define o zsh como shell padrão.
+#
+# @title Zsh + Oh My Zsh + zinit e plugins
+# @check [[ -d $HOME/.oh-my-zsh && -d $HOME/.local/share/zinit/zinit.git ]] && getent passwd "$USER" | grep -q "/zsh$"
 set -euo pipefail
 source "$(dirname "$0")/lib.sh"
 
@@ -11,8 +14,8 @@ apt_install zsh curl git
 
 ZSH_PATH="$(command -v zsh)"
 if [[ "$(getent passwd "$USER" | cut -d: -f7)" != "$ZSH_PATH" ]]; then
-  info "Definindo zsh como shell padrão (pode pedir sua senha)"
-  chsh -s "$ZSH_PATH"
+  info "Definindo zsh como shell padrão"
+  sudo chsh -s "$ZSH_PATH" "$USER"
   warn "Faça logout/login para o zsh virar o shell padrão"
 else
   success "zsh já é o shell padrão"
