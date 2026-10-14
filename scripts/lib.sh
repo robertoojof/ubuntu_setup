@@ -20,6 +20,24 @@ apt_install() {
   fi
 }
 
+# Carrega o .env da raiz do repositório e exige as variáveis passadas.
+# Uso: load_env VAR1 VAR2 ...
+load_env() {
+  local env_file
+  env_file="$(dirname "${BASH_SOURCE[0]}")/../.env"
+  if [[ ! -f "$env_file" ]]; then
+    error "Arquivo .env não encontrado; rode: cp .env.example .env e preencha"
+    exit 1
+  fi
+  source "$env_file"
+  for var in "$@"; do
+    if [[ -z "${!var:-}" ]]; then
+      error "Preencha $var no .env"
+      exit 1
+    fi
+  done
+}
+
 # Escreve (ou substitui) um bloco gerenciado no final de um arquivo.
 # Uso: write_block <arquivo> <nome> <<'EOF' ... EOF
 write_block() {

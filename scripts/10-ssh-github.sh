@@ -4,20 +4,11 @@
 set -euo pipefail
 source "$(dirname "$0")/lib.sh"
 
-ENV_FILE="$(dirname "$0")/../.env"
 KEY="$HOME/.ssh/id_ed25519"
 # Chave publicada pelo GitHub (https://api.github.com/meta).
 GITHUB_HOST_KEY="github.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOMqqnkVzrm0SdG6UOoqKLsabgH5C9okWi0dh2l9GKJl"
 
-if [[ ! -f "$ENV_FILE" ]]; then
-  error "Arquivo .env não encontrado; rode: cp .env.example .env e preencha"
-  exit 1
-fi
-source "$ENV_FILE"
-if [[ -z "${GITHUB_EMAIL:-}" ]]; then
-  error "Preencha GITHUB_EMAIL no .env"
-  exit 1
-fi
+load_env GITHUB_EMAIL
 
 apt_install openssh-client xdg-utils
 
